@@ -19,7 +19,6 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Auth::routes();
 
 Route::resource('products', ProductController::class);
 
