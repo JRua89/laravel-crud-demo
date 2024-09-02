@@ -6,7 +6,7 @@
        <!-- Title and Back Button -->
        <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="mb-0">Add New Product</h2>
-        <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
+        <a class="btn btn-primary" href="{{ route('products.index') }}"><i class="fas fa-arrow-left"></i> Back</a>
     </div>
     </div>
 </div>
