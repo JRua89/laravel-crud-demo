@@ -35,7 +35,7 @@
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
                     @csrf
-                    <button type="button" class="btn btn-danger" onclick="showDeleteModal('{{ route('products.destroy', $product->id) }}')">Delete</button>
+                    <button type="button" class="btn btn-danger" onclick="showDeleteModal('{{ route('products.destroy', $product->id) }}', '{{ $product->name }}')">Delete</button>
                 </form>
             </td>
         </tr>
@@ -47,9 +47,16 @@
 
     <script>
         // Function to handle the modal trigger
-        function showDeleteModal(formAction) {
+        function showDeleteModal(formAction,productName) {
             var form = document.getElementById('deleteForm');
+            var productNameSpan = document.getElementById('productName');
+           
+            form.reset();
             form.action = formAction;
+            
+             // Update the modal body with the product name
+            productNameSpan.textContent = productName;
+
             $('#deleteModal').modal('show');
         }
     </script>
@@ -65,7 +72,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this product?
+                    Are you sure you want to delete this product "<span id="productName"></span>" ?
                 </div>
                 <div class="modal-footer">
                     <form id="deleteForm" method="POST" action="">
