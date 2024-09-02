@@ -3,12 +3,11 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-        <div class="pull-left">
-            <h2>Add New Product</h2>
-        </div>
-        <div class="pull-right">
-            <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-        </div>
+       <!-- Title and Back Button -->
+       <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Add New Product</h2>
+        <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
+    </div>
     </div>
 </div>
 
@@ -40,7 +39,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </div>
     </div>
 

@@ -6,9 +6,9 @@
             <div class="pull-left">
                 <h2>Laravel 8 CRUD Example</h2>
             </div>
-            <div class="pull-right">
+           <!-- <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-            </div>
+            </div>-->
         </div>
     </div>
 
@@ -29,14 +29,13 @@
         <tr>
             <td>{{ $product->id }}</td>
             <td>{{ $product->name }}</td>
-            <td>{{ $product->detail }}</td>
+            <td> {{ \Illuminate\Support\Str::limit($product->detail, 150, '...') }}</td>
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
                     <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
                     @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="button" class="btn btn-danger" onclick="showDeleteModal('{{ route('products.destroy', $product->id) }}')">Delete</button>
                 </form>
             </td>
         </tr>
@@ -45,5 +44,39 @@
     </table>
     {{ $products->links() }}
 
+
+    <script>
+        // Function to handle the modal trigger
+        function showDeleteModal(formAction) {
+            var form = document.getElementById('deleteForm');
+            form.action = formAction;
+            $('#deleteModal').modal('show');
+        }
+    </script>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Confirm Deletion</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this product?
+                </div>
+                <div class="modal-footer">
+                    <form id="deleteForm" method="POST" action="">
+                        @csrf
+                        @method('DELETE')
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
 @endsection

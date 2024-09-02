@@ -1,16 +1,13 @@
 @extends('products.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('products.index') }}"> Back</a>
-            </div>
-        </div>
+<div class="container my-4">
+       <!-- Title and Back Button -->
+       <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Edit Product</h2>
+        <a class="btn btn-primary" href="{{ route('products.index') }}">Back</a>
     </div>
+    
 
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -41,9 +38,10 @@
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </div>
         </div>
 
     </form>
+</div>
 @endsection
