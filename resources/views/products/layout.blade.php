@@ -12,7 +12,18 @@
     <!-- Header -->
     <header class="bg-primary text-white py-3">
         <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
             <h1 class="mb-0">Laravel 8 CRUD Application</h1>
+            @if (Request::routeIs('products.index') || Request::routeIs('products.create') || Request::routeIs('products.edit') || Request::routeIs('products.show')) 
+            <!-- Logout Button -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                Logout
+            </button>
+            @endif
+        </div>
             <nav class="d-flex justify-content-between align-items-center">
                 <!-- Optionally, add more navigation items here -->
                 @if (Request::routeIs('products.index')) 
