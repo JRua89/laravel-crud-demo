@@ -19,9 +19,17 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
+Route::get('/products', function () {
+    // Profile page logic
+})->middleware('auth.custom');
+
+Route::get('/login', [App\Http\Controllers\Auth\LoginController::class, 'checkauth'])->name('checkauth');
 
 Route::resource('products', ProductController::class);
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::post('/logout', [App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('logout');

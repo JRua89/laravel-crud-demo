@@ -12,6 +12,8 @@
         </div>
     </div>
 
+
+    
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -36,6 +38,7 @@
                     <a class="btn btn-primary" href="{{ route('products.edit',$product->id) }}">Edit</a>
                     @csrf
                     <button type="button" class="btn btn-danger" onclick="showDeleteModal('{{ route('products.destroy', $product->id) }}', '{{ $product->name }}')">Delete</button>
+
                 </form>
             </td>
         </tr>

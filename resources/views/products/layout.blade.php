@@ -1,3 +1,9 @@
+@php
+    if (!Auth::check()) {
+        header("Location: " . route('login'));
+        exit;
+    }
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,15 +19,18 @@
     <header class="bg-primary text-white py-3">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
-            <h1 class="mb-0">Laravel 8 CRUD Application</h1>
+            <h1 class="mb-0">Welcome {{ ucfirst(Auth::user()->name) }}
+            <br></h1>
             @if (Request::routeIs('products.index') || Request::routeIs('products.create') || Request::routeIs('products.edit') || Request::routeIs('products.show')) 
             <!-- Logout Button -->
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-            <button class="btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                Logout
-            </button>
+           
+
+<form action="{{ route('logout') }}" method="POST">
+    @csrf
+    <button type="submit" class="btn btn-danger">Logout</button>
+</form>
+
+
             @endif
         </div>
             <nav class="d-flex justify-content-between align-items-center">
