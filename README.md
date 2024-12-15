@@ -7,7 +7,7 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Created a Login, sign up, and password reset  to use a CRUD datatable concept using Laravel
+## Created a Login, Register, and password reset  to use a CRUD datatable concept using Laravel
 
 ![image](https://github.com/user-attachments/assets/f8dbd887-2b2c-436d-8e12-dd435de74c40)
 
