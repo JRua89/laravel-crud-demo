@@ -41,13 +41,16 @@
     <ul class="navbar-nav">
       <li class="nav-item active">
         <!-- Optionally, add more navigation items here -->
-        @if (Request::routeIs('products.index')) 
+        @if (Request::routeIs('products.index') || Request::routeIs('profile.show')) 
         <a class="nav-link" href="{{ route('products.create') }}">Create New Product</a>
         @endif
       </li>     
+      <li class="nav-item active">
+      <a class="nav-link" href="{{ route('profile.show') }}">Show Profile</a>
+      </li>
     </ul>
   </div>
-  @if (Request::routeIs('products.index') || Request::routeIs('products.create') || Request::routeIs('products.edit') || Request::routeIs('products.show')) 
+  
             <!-- Logout Button -->
            
 
@@ -57,7 +60,6 @@
 </form>
 
 
-            @endif
 </nav>
         </div>
     </header>
