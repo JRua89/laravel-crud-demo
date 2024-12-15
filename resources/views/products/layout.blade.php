@@ -21,7 +21,33 @@
             <div class="d-flex justify-content-between align-items-center">
             <h1 class="mb-0">Welcome {{ ucfirst(Auth::user()->name) }}
             <br></h1>
-            @if (Request::routeIs('products.index') || Request::routeIs('products.create') || Request::routeIs('products.edit') || Request::routeIs('products.show')) 
+         
+        </div>
+            <!--<nav class="d-flex justify-content-between align-items-center">
+                
+                @if (Request::routeIs('products.index')) 
+                <a class="btn btn-light" href="{{ route('products.create') }}">Create New Product</a>
+                @endif
+            </nav>-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+    <img src="https://getbootstrap.com/docs/4.5/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+    Laravel_CRUD
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <!-- Optionally, add more navigation items here -->
+        @if (Request::routeIs('products.index')) 
+        <a class="nav-link" href="{{ route('products.create') }}">Create New Product</a>
+        @endif
+      </li>     
+    </ul>
+  </div>
+  @if (Request::routeIs('products.index') || Request::routeIs('products.create') || Request::routeIs('products.edit') || Request::routeIs('products.show')) 
             <!-- Logout Button -->
            
 
@@ -32,13 +58,7 @@
 
 
             @endif
-        </div>
-            <nav class="d-flex justify-content-between align-items-center">
-                <!-- Optionally, add more navigation items here -->
-                @if (Request::routeIs('products.index')) 
-                <a class="btn btn-light" href="{{ route('products.create') }}">Create New Product</a>
-                @endif
-            </nav>
+</nav>
         </div>
     </header>
 

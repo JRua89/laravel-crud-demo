@@ -46,7 +46,7 @@ class LoginController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
 
-     public function index()
+     public function checkauth()
      {
          if (!Auth::check()) {
              return redirect('/login');

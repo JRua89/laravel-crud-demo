@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\Paginator;
 
@@ -26,5 +27,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Paginator::useBootstrap();
+        
+        if (Auth::check()) {
+            // Perform some action for authenticated users
+        }
     }
 }
