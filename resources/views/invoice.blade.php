@@ -23,14 +23,21 @@
     <tr>
 
         <td class="width-70">
-
-            <img src="{{ public_path('itsolutionstuff.png') }}" alt="" width="200" />
-
+        @if (strpos(url()->previous(), 'products') === false)
+            <img src="{{ public_path('Screenshot 2024-12-21 112440.png') }}" alt="" width="200" />
+            @else
+            <img src="{{ public_path('3cae48eb-533c-4fea-978d-5e92f420505d.jpg') }}" alt="" width="200" />
+            @endif
         </td>
 
         <td class="width-30">
 
-            <h2>Invoice ID: 9584525</h2>
+            
+            @if (strpos(url()->previous(), 'products') === false)
+            <h2>Invoice ID: {{ $geninvoiceid }}</h2>
+             @else
+            <h2>Current Products</h2>
+             @endif
 
         </td>
 
@@ -39,7 +46,10 @@
 </table>
 
   
-
+ <!-- Optionally, add more navigation items here -->
+ @if (strpos(url()->previous(), 'products') === false)
+         
+          
 <div class="margin-top">
 
     <table class="table-no-border">
@@ -80,6 +90,8 @@
 
 </div>
 
+@endif
+
   
 
 <div>
@@ -92,13 +104,19 @@
 
                 <th class="width-25">
 
-                    <strong>Qty</strong>
+                    <strong>Name</strong>
 
                 </th>
 
                 <th class="width-50">
 
-                    <strong>Product</strong>
+                    <strong>Detail</strong>
+
+                </th>
+
+                <th class="width-25">
+
+                    <strong>Image</strong>
 
                 </th>
 
@@ -113,26 +131,32 @@
         </thead>
 
         <tbody>
-
+            @php $subtotal = 0; @endphp
             @foreach($data as $value)
-
+            @php 
+            $subtotal += $value['price']; 
+            @endphp
             <tr>
 
                 <td class="width-25">
 
-                {{ $value['quantity'] }}
+                {{ $value['name'] }}
 
                 </td>
 
                 <td class="width-50">
 
-                {{ $value['description'] }}
+                {{ $value['detail'] }}
 
                 </td>
 
                 <td class="width-25">
+                <img src="{{ public_path($value['image']) }}" alt="{{ $value['name'] }}" width="50" height="50">
+            </td>
 
-                    {{ $value['price'] }}
+                <td class="width-25">
+
+                ${{ number_format($value['price'], 2) }}
 
                 </td>
 
@@ -143,55 +167,48 @@
         </tbody>
 
         <tfoot>
+                @php 
+                $tax = $subtotal * 0.10; 
+                $total = $subtotal + $tax; 
+                @endphp
 
-            <tr>
+<tr>
+    <td class="width-70" colspan="3">
+    @if (strpos(url()->previous(), 'products') === false)
+    <strong>Sub Total:</strong>
+    @else
+    <strong>Total:</strong>
+    @endif
+    </td>
+    <td class="width-25" style="text-align: right;">
+        <strong>${{ number_format($subtotal, 2) }}</strong>
+    </td>
+</tr>
 
-                <td class="width-70" colspan="2">
 
-                    <strong>Sub Total:</strong>
+ <!-- Optionally, add more navigation items here -->
+ @if (strpos(url()->previous(), 'products') === false)
+         
+          
+<tr>
+    <td class="width-70" colspan="3">
+        <strong>Tax (10%):</strong>
+    </td>
+    <td class="width-25" style="text-align: right;">
+        <strong>${{ number_format($tax, 2) }}</strong>
+    </td>
+</tr>
 
-                </td>
+<tr>
+    <td class="width-70" colspan="3">
+        <strong>Total Amount:</strong>
+    </td>
+    <td class="width-5" style="text-align: right;">
+        <strong>${{ number_format($total, 2) }}</strong>
+    </td>
+</tr>
 
-                <td class="width-25">
-
-                    <strong>$1000.00</strong>
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td class="width-70" colspan="2">
-
-                    <strong>Tax</strong>(10%):
-
-                </td>
-
-                <td class="width-25">
-
-                    <strong>$100.00</strong>
-
-                </td>
-
-            </tr>
-
-            <tr>
-
-                <td class="width-70" colspan="2">
-
-                    <strong>Total Amount:</strong>
-
-                </td>
-
-                <td class="width-25">
-
-                    <strong>$1100.00</strong>
-
-                </td>
-
-            </tr>
-
+@endif
         </tfoot>
 
     </table>

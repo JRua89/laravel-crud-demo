@@ -6,7 +6,7 @@
         <h2>Laravel 8 CRUD Example</h2>
     </div>
     <div>
-        <a class="btn btn-success" href="invoice-pdf"> Download invoice <i class="fa-solid fa-file-pdf"></i></a>
+        <a class="btn btn-success" href="invoice-pdf"> Download products <i class="fa-solid fa-file-pdf"></i></a>
     </div>
 </div>
 

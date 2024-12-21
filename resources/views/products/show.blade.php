@@ -12,13 +12,21 @@
         <div class="card">
             <div class="card-body">
                 <div class="row mb-3">
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <h5 class="card-title">Name:</h5>
                         <p class="card-text">{{ $product->name }}</p>
                     </div>
-                    <div class="col-md-8">
+                    <div class="col-md-6 mb-4">
                         <h5 class="card-title">Details:</h5>
                         <p class="card-text">{{ $product->detail }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title">Price:</h5>
+                        <p class="card-text">{{ $product->price }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="card-title">Image:</h5>
+                        <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="200">
                     </div>
                 </div>
             </div>

@@ -3,11 +3,11 @@
 @section('content')
 <div class="row">
     <div class="col-lg-12 margin-tb">
-       <!-- Title and Back Button -->
-       <div class="d-flex justify-content-between align-items-center mb-4">
-        <h2 class="mb-0">Add New Product</h2>
-        <a class="btn btn-primary" href="{{ route('products.index') }}"><i class="fas fa-arrow-left"></i> Back</a>
-    </div>
+        <!-- Title and Back Button -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Add New Product</h2>
+            <a class="btn btn-primary" href="{{ route('products.index') }}"><i class="fas fa-arrow-left"></i> Back</a>
+        </div>
     </div>
 </div>
 
@@ -22,10 +22,10 @@
     </div>
 @endif
 
-<form action="{{ route('products.store') }}" method="POST">
+<form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-     <div class="row">
+    <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Name:</strong>
@@ -38,8 +38,22 @@
                 <textarea class="form-control" style="height:150px" name="detail" placeholder="Detail"></textarea>
             </div>
         </div>
+        <!-- Price Input -->
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Price:</strong>
+                <input type="number" step="0.01" name="price" class="form-control" placeholder="Price">
+            </div>
+        </div>
+        <!-- Image Upload -->
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Image:</strong>
+                <input type="file" name="image" class="form-control-file">
+            </div>
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary btn-block">Submit</button>
+            <button type="submit" class="btn btn-primary btn-block">Submit</button>
         </div>
     </div>
 

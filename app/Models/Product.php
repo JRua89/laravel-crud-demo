@@ -11,6 +11,23 @@ class Product extends Model
 
     protected $fillable =[
         'name',
-        'detail'
+        'detail',
+        'price',
+        'image',
+        'geninvoiceid'
     ];
+
+    public function getPriceWithTaxAttribute()
+    {
+        return $this->price * 1.10; // Assuming 10% tax
+    }
+
+    /**
+     * You can define a helper to get a formatted price.
+     */
+    public function getFormattedPriceAttribute()
+    {
+        return '$' . number_format($this->price, 2);
+    }
+
 }
