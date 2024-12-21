@@ -1,16 +1,14 @@
 @extends('products.layout')
 
 @section('content')
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="pull-left">
-                <h2>Laravel 8 CRUD Example</h2>
-            </div>
-           <!-- <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('products.create') }}"> Create New Product</a>
-            </div>-->
-        </div>
+<div class="row d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2>Laravel 8 CRUD Example</h2>
     </div>
+    <div>
+        <a class="btn btn-success" href="invoice-pdf"> Download invoice <i class="fa-solid fa-file-pdf"></i></a>
+    </div>
+</div>
 
 
     
