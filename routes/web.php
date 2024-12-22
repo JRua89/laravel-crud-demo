@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\InvoiceController;
@@ -41,4 +41,4 @@ Route::middleware(['auth'])->get('/profile', [ProfileController::class, 'show'])
 Route::get('invoice-pdf', [InvoiceController::class, 'index']);
 
 
-
+Route::get('/vendors', [VendorController::class, 'index'])->name('vendors.index');

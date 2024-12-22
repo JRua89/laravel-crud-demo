@@ -100,10 +100,31 @@ class ProductController extends Controller
              //validatae the input parameters
              $request->validate([
                 'name' => 'required',
-                'detail' => 'required'
+                'detail' => 'required',
+                'price' => 'required|numeric',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
+
+            $input = $request->all();
+
+            if ($request->hasFile('image')) {
+            // Generate a unique name for the image
+            $imageName = time() . '.' . $request->image->extension();
+
+            // Move the image to the 'public/images' directory
+            $request->image->move(public_path('images'), $imageName);
+
+            // Save the image name or path in the database
+            $input['image'] = 'images/' . $imageName; // Use the relative path
+            } else {
+
+            $input['image'] = 'no-image.jpg';
+
+            }
+
+
             //create a new product
-            $product->update($request->all());
+            $product->update($input);
             //redirect the user and send friendly message
             return redirect()->route('products.index')->with('success', 'Product updated successfully');
     }
