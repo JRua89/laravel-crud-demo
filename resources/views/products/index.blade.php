@@ -24,7 +24,7 @@
             <th>Name</th>
             <th>Details</th>
             <th>Image</th>
-            <th>Image</th>
+            <th>Price</th>
             <th width="280px">Action</th>
         </tr>
         @foreach ($products as $product)
@@ -33,6 +33,7 @@
             <td>{{ $product->name }}</td>
             <td> {{ \Illuminate\Support\Str::limit($product->detail, 150, '...') }}</td>
             <td> <img src="{{ $product->image }}" alt="{{ $product->name }}" width="80" height="80"></td>
+            <td>{{ $product->price }}</td>
             <td>
                 <form action="{{ route('products.destroy',$product->id) }}" method="POST">
                     <a class="btn btn-info" href="{{ route('products.show',$product->id) }}">Show</a>
