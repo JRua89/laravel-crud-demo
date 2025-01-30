@@ -7,7 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Created a Login, Register, and password reset  to use a CRUD datatable concept using Laravel
+## A Login, Register, and password reset  to use a CRUD datatable concept using Laravel
+
+I created a login, register, and password reset system utilizing Laravel, integrating it with a CRUD datatable concept for efficient user management. The authentication features ensure secure access, while the CRUD functionality allows users to create, read, update, and delete records seamlessly. Additionally, I implemented the ability to update passwords via email, allowing users to securely reset their credentials through a token-based email verification system. By leveraging Laravel's built-in authentication features and DataTables for dynamic data handling, the application provides a smooth and interactive user experience.
 
 ![image](https://github.com/user-attachments/assets/f8dbd887-2b2c-436d-8e12-dd435de74c40)
 
