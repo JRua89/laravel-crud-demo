@@ -25,6 +25,10 @@
                         <p class="card-text">{{ $product->price }}</p>
                     </div>
                     <div class="col-md-6">
+                        <h5 class="card-title">quantity:</h5>
+                        <p class="card-text">{{ $product->quantity }}</p>
+                    </div>
+                    <div class="col-md-6">
                         <h5 class="card-title">Image:</h5>
                         <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="200">
                     </div>

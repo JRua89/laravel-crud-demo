@@ -45,6 +45,12 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="form-group">
+                    <strong>quantity:</strong>
+                    <input type="number" step="0.01" name="quantity" value="{{ $product->quantity }}" class="form-control" placeholder="quantity">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
                     <strong>Image:</strong>
                     <img src="{{ asset($product->image) }}" alt="{{ $product->name }}" width="200">
                     <input type="file" name="image" class="form-control-file">

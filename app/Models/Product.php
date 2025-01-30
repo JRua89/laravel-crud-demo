@@ -14,6 +14,7 @@ class Product extends Model
         'detail',
         'price',
         'image',
+        'quantity',
         'geninvoiceid'
     ];
 

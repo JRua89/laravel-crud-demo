@@ -32,7 +32,7 @@ class InvoiceController extends Controller
         $input['geninvoiceid'] = Str::generateNumericId(12);
 
         // Fetch data from the database
-        $data = Product::select('name', 'detail', 'price','image')->get();
+        $data = Product::select('name', 'detail', 'price','quantity','image')->get();
 
         // Load the view and pass the data
         $pdf = Pdf::loadView('invoice', ['data' => $data, 'geninvoiceid' =>$input['geninvoiceid']]);

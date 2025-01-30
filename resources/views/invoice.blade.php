@@ -126,6 +126,18 @@
 
                 </th>
 
+                <th class="width-25">
+
+                    <strong>Quantity</strong>
+
+                    </th>
+
+                    <th class="width-25">
+
+                    <strong>Sub Total</strong>
+
+                    </th>
+
             </tr>
 
         </thead>
@@ -133,8 +145,10 @@
         <tbody>
             @php $subtotal = 0; @endphp
             @foreach($data as $value)
+           
             @php 
             $subtotal += $value['price']; 
+            $itemSubtotal = $value['price'] * $value['quantity'];
             @endphp
             <tr>
 
@@ -157,6 +171,18 @@
                 <td class="width-25">
 
                 ${{ number_format($value['price'], 2) }}
+
+                </td>
+
+                <td class="width-25">
+
+                {{ $value['quantity'] }}
+
+                </td>
+
+                <td class="width-25">
+
+                ${{number_format($itemSubtotal, 2)}}
 
                 </td>
 
