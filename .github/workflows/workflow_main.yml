@@ -59,6 +59,11 @@ jobs:
       - name: Drop Existing Database (if exists)
         run: php artisan db:wipe --force
 
+      - name: Drop `password_resets` Table
+        run: |
+             php artisan db:table --drop password_resets
+
       - name: Run Migrations
         run: php artisan migrate --force
+
 
