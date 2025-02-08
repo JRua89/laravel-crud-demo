@@ -1,4 +1,4 @@
-   - name: PHP Code Sniffer (php-actions)
+   name: PHP Code Sniffer
   # You may pin to the exact commit or the version.
   # uses: php-actions/phpcs@0a99a2845164005c597c165cd45dc594d8fe6c1d
   uses: php-actions/phpcs@v1
