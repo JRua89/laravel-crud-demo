@@ -55,3 +55,10 @@ jobs:
 
       - name: Run Tests
         run: php artisan test
+
+      - name: Drop Existing Database (if exists)
+        run: php artisan db:wipe --force
+
+      - name: Run Migrations
+        run: php artisan migrate --force
+
