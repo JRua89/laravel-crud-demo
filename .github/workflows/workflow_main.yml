@@ -68,5 +68,12 @@ jobs:
         
       - name: Run Migrations (Ignore DB Connections)
         run: php artisan migrate:fresh --force --database=testing
+        
+      - name: Drop `password_resets` Table
+        run: php artisan schema:drop password_resets
+
+      - name: Run Migrations
+        run: php artisan migrate --force
+
 
 
