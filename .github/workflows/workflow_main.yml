@@ -75,5 +75,35 @@ jobs:
       - name: Run Migrations
         run: php artisan migrate --force
 
+      - name: Set up .env file
+        run: |
+          cp .env.example .env
+          php artisan key:generate
+
+      - name: Set up database
+        run: |
+          php artisan migrate --force
+
+      - name: Run tests with authentication
+        run: |
+          # Make sure authentication is set up if necessary
+          php artisan migrate --force
+          php artisan db:seed --force
+          php artisan config:clear
+          php artisan cache:clear
+
+          # Set a testing user
+          php artisan tinker --execute "\App\Models\User::factory()->create(['email' => 'testuser@example.com']);"
+
+          # Run the tests
+          php artisan test --env=testing
+
+      - name: Upload test results to GitHub
+        if: always()
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: storage/logs
+
 
 
