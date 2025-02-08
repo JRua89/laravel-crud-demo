@@ -32,14 +32,14 @@ jobs:
           extensions: mbstring, pdo, mysql
           tools: composer, phpunit
 
+      - name: Install Dependencies
+        run: composer install --no-progress --no-suggest --prefer-dist
+
       - name: Create .env file
         run: cp .env.example .env
 
       - name: Generate application key
         run: php artisan key:generate
-
-      - name: Install Dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist
 
       - name: Run Migrations
         run: php artisan migrate --force
